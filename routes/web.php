@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\AlumnoController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +18,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('empresas', [\App\Http\Controllers\EmpresaController::class, 'consulta_filtro']);
+Route::get("empresas/paginate",[ \App\Http\Controllers\EmpresaController::class,"get_paginate"] );
+
+Route::resource("empresas", EmpresaController::class);
+Route::resource("alumnos", AlumnoController::class);
+Route::resource("productos", ProductoController::class);
+
+
+Route::view("main", "empresa.main");
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,5 +41,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 require __DIR__.'/auth.php';

@@ -63,7 +63,15 @@ Ponemos en marcha vite
 ```shell
 npm run dev
 ```
-
+Establecemos el [layout.blade.php](.../resources/views/layout.blade.php)
+Lo probamos 
+1. Creo una nueva ruta que retorne una página que extienda de layout
+    1.Creamos la ruta en web.php
+    ```shell
+   Route::view("main,main");
+   ```
+   2.Creo la 
+   
 
 
 
